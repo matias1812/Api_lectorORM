@@ -12,6 +12,10 @@ class userSchema(BaseModel):
     class Config:
         orm_mode = True
         by_alias = True
+class PruebaSchema(BaseModel):
+    prueba: Optional[str] = Field(None, alias="prueba")
+    nota: Optional[str] = Field(None, alias="nota")
+    qr: Optional[str] = Field(None, alias="qr")
 
 class Request(BaseModel):
     parameter: Optional[T] = Field(...)
@@ -20,6 +24,8 @@ class Request(BaseModel):
 class RequestUser(BaseModel):
     parameter: userSchema = Field(...)
 
+class RequestPrueba(BaseModel):
+    parameter: PruebaSchema = Field(...)
 
 class Response(BaseModel):
     code: str
